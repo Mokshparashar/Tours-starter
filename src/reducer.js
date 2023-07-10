@@ -1,5 +1,5 @@
 import useReducer from "react";
-import { DELETE_TOUR, SET_DATA } from "./actions";
+import { DELETE_TOUR, MODIFY_STRING, SET_DATA } from "./actions";
 import { useGlobalContext } from "./context";
 
 export const reducer = (state, action) => {
@@ -13,5 +13,9 @@ export const reducer = (state, action) => {
     let faTours = new Map(state.tours);
     faTours.delete(action.payload.id);
     return { ...state, tours: faTours };
+  }
+
+  if (action.type == MODIFY_STRING) {
+    return { ...state, showMore: !state.showMore };
   }
 };
