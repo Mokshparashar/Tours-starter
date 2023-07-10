@@ -10,7 +10,8 @@ export const reducer = (state, action) => {
   }
 
   if (action.type == DELETE_TOUR) {
-    let faTours = state.tours.delete(action.payload.id);
+    let faTours = new Map(state.tours);
+    faTours.delete(action.payload.id);
     return { ...state, tours: faTours };
   }
 };
